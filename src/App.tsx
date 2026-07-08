@@ -2,8 +2,9 @@ import "./App.css";
 import { Route, Switch, Link, useLocation } from "wouter";
 import { useState,  type SubmitEvent } from "react";
 
-const API = "http://localhost:5173/";
+const API = "http://localhost:3000";
 export default function App() {
+  fetch("http://localhost:3000/health")
   return (
     <Switch>
       <Route path="/sign_in">
@@ -20,6 +21,7 @@ function Sign_in() {
   const [, navigate] = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
@@ -57,7 +59,7 @@ function Sign_in() {
           <label htmlFor="login-password">Password</label>
           <input
             id="login-password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             className="form__input"
             placeholder="********"
             value={password}
@@ -66,7 +68,12 @@ function Sign_in() {
         </div>
 
         <label className="checkbox">
-          <input type="checkbox" className="checkbox__input" />
+          <input 
+            type="checkbox" 
+            className="checkbox__input" 
+            checked={showPassword}
+            onChange={() => setShowPassword(!showPassword)}
+          />
           <span>Show password</span>
         </label>
 
@@ -85,6 +92,9 @@ function Sign_up() {
   const [, navigate] = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
@@ -123,14 +133,42 @@ function Sign_up() {
           <input
             id="register-password"
             className="form__input"
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="********"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <label className="checkbox">
-          <input type="checkbox" className="checkbox__input" />
+          <input 
+            type="checkbox" 
+            className="checkbox__input" 
+            checked={showPassword}
+            onChange={() => setShowPassword(!showPassword)}
+          />
+          <span>Show password</span>
+        </label>
+
+        <div className="form-group">
+          <label htmlFor="register-confirm-password">Confirm Password</label>
+          <input
+            id="register-confirm-password"
+            className="form__input"
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="********"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            className="checkbox__input"
+            checked={showConfirmPassword}
+            onChange={() => setShowConfirmPassword(!showConfirmPassword)}
+          />
           <span>Show password</span>
         </label>
 
