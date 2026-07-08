@@ -167,7 +167,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;
@@ -181,4 +181,18 @@
     right: 0;
     border-right-color: var(--border);
   }
+}
+
+.sign_in {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign_in-card {
+  width: 420px;
+  display: flex;
+  gap: 26px;
 }
