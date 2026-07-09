@@ -3,7 +3,7 @@ import { Route, Switch, Link, useLocation } from "wouter";
 import { useState, useEffect, type SubmitEvent } from "react";
 import { authValidation } from "./validation"; 
 
-const API = "http://localhost:3000";
+const API = "https://auth-server-1xji.onrender.com";
 
 export default function App() {
 // useEffect(() => {
