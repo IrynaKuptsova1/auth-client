@@ -24,8 +24,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  @media (max-width: 1024px) {
+@media (max-width: 1024px) {
+  :root {
     font-size: 16px;
   }
 }
@@ -51,9 +53,9 @@
 }
 
 #root {
-    width: 100%;
-    height: 100%;
-    display: flex;
+  width: 100%;
+  height: 100%;
+  display: flex;
 }
 
 h1,
@@ -67,100 +69,109 @@ h1 {
   font-size: 56px;
   letter-spacing: -1.68px;
   margin: 32px 0;
-  @media (max-width: 1024px) {
+}
+
+@media (max-width: 1024px) {
+  h1 {
     font-size: 36px;
     margin: 20px 0;
   }
 }
+
 h2 {
   font-size: 24px;
   line-height: 118%;
   letter-spacing: -0.24px;
   margin: 0 0 8px;
-  @media (max-width: 1024px) {
+}
+
+@media (max-width: 1024px) {
+  h2 {
     font-size: 20px;
   }
 }
+
 p {
   margin: 0;
 }
+
 .form__input {
-    width: 100%;
-    padding: 16px;
-    font-family: var(--sans);
-    font-size: 16px;
-  
-    background-color: var(--code-bg); 
-    color: var(--text-h);
-    
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    outline: none;
-    box-sizing: border-box;
-    transition: all 0.2s ease-in-out;
+  width: 100%;
+  padding: 16px;
+  font-family: var(--sans);
+  font-size: 16px;
+  background-color: var(--code-bg);
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
 }
 
 .form__input::placeholder {
-    color: var(--text);
-    opacity: 0.8;
+  color: var(--text);
+  opacity: 0.8;
 }
 
 .form__input:focus {
-    border-color: var(--accent);
-    background-color: var(--bg); 
-    box-shadow: 0 0 0 3px var(--accent-bg); 
+  border-color: var(--accent);
+  background-color: var(--bg);
+  box-shadow: 0 0 0 3px var(--accent-bg);
 }
+
 .btn {
-    width: 100%;
-    padding: 14px 24px;
-    font-family: var(--sans);
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 14px 24px;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
 }
 
 .btn-primary {
-    background-color: var(--accent); 
-    color: var(--bg);
-    border: 1px solid transparent;
+  background-color: var(--accent);
+  color: var(--bg);
+  border: 1px solid transparent;
 }
 
 .btn-primary:hover {
-    box-shadow: 0 0 0 3px var(--accent-border), var(--shadow);
-    opacity: 0.95;
+  box-shadow: 0 0 0 3px var(--accent-border), var(--shadow);
+  opacity: 0.95;
 }
 
 .btn-primary:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 .btn-outline {
-    background-color: transparent;
-    color: var(--accent); 
-    border: 1px solid var(--accent-border);
+  background-color: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
 }
 
 .btn-outline:hover {
-    background-color: var(--accent-bg); 
-    border-color: var(--accent);
-    box-shadow: var(--shadow);
+  background-color: var(--accent-bg);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
 }
 
 .btn-outline:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
-.higlight-tekst {
-    color: var(--accent); 
-    font-weight: 500;
+.highlight-tekst {
+  color: var(--accent);
+  font-weight: 500;
 }
+
 .checkbox {
   display: flex;
   align-items: center;
@@ -175,7 +186,7 @@ p {
 }
 
 .checkbox:hover {
-  color: var(--text-h); 
+  color: var(--text-h);
 }
 
 .checkbox__input {
@@ -184,7 +195,7 @@ p {
   width: 20px;
   height: 20px;
   border: 2px solid var(--border);
-  border-radius: 6px; 
+  border-radius: 6px;
   background-color: var(--code-bg);
   cursor: pointer;
   display: grid;
@@ -216,6 +227,7 @@ p {
 .checkbox__input:checked::before {
   scale: 1;
 }
+
 .checkbox__input:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px var(--accent-bg);

@@ -6,9 +6,9 @@ import { authValidation } from "./validation";
 const API = "http://localhost:3000";
 
 export default function App() {
-  useEffect(() => {
-    fetch(`${API}/health`).catch((err) => console.error(err));
-  }, []);
+// useEffect(() => {
+//    fetch(`${API}/health`).catch((err) => console.error(err));
+//  }, []);
 
   return (
     <Switch>
@@ -122,10 +122,8 @@ function Sign_in() {
 
         <button type="submit" className="btn btn-primary" disabled={isFormInvalid}>Sign in</button>
         
-        <p className="auth-redirect">
-          Don't have an account?{" "}
-          <Link href="/sign_up" className="higlight-tekst">Sign up</Link>
-        </p>
+        <Link href="/sign_up" className="auth-redirect-link">Don't have an account? <span className="highlight-tekst">Sign up</span>
+        </Link>
       </form>
     </div>
   );
@@ -240,9 +238,9 @@ function Sign_up() {
         <button type="submit" className="btn btn-primary" disabled={isFormInvalid}>
           Sign up
         </button>
-        <p className="auth-redirect">Already have an account?{" "}
-          <Link href="/sign_in" className="higlight-tekst">Sign in</Link>
-        </p>
+        <Link href="/sign_in" className="auth-redirect-link">
+  Already have an account? <span className="highlight-tekst">Sign in</span>
+</Link>
       </form>
     </div>
   );

@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-} 
+}
 
 .form-group {
   display: flex;
@@ -25,6 +25,7 @@
   font-size: 18px;
   color: var(--text-h);
 }
+
 .form-group__input-wrapper {
   position: relative;
   width: 100%;
@@ -55,7 +56,7 @@
 }
 
 .password-toggle-btn:hover {
-  color: var(--accent); 
+  color: var(--accent);
   opacity: 1;
 }
 
@@ -65,18 +66,42 @@
   display: block;
 }
 
-.auth-redirect {
+.auth-redirect-link {
+  display: inline-block;
   text-align: center;
   font-size: 16px;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.auth-redirect-link:hover {
+  color: var(--text-h);
+}
+
+.auth-redirect-link .highlight-tekst {
+  color: var(--accent);
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.auth-redirect-link:hover .highlight-tekst {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.highlight-tekst {
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .profile-card {
   width: 100%;
-  max-width: 500px; /* Такая же ширина, как и у форм авторизации */
+  max-width: 500px;
   padding: 40px;
   background-color: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 24px; /* Мягкое скругление для карточки */
+  border-radius: 24px;
   box-shadow: var(--shadow);
   box-sizing: border-box;
   display: flex;
@@ -94,7 +119,7 @@
   flex-direction: column;
   gap: 8px;
   padding: 20px;
-  background-color: var(--code-bg); 
+  background-color: var(--code-bg);
   border-radius: 16px;
   border: 1px solid var(--border);
 }
@@ -108,10 +133,10 @@
 }
 
 .profile-card__email {
-  font-family: var(--mono); 
+  font-family: var(--mono);
   font-size: 18px;
   color: var(--text-h);
-  word-break: break-all; 
+  word-break: break-all;
 }
 
 @media (max-width: 1024px) {
