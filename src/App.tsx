@@ -17,7 +17,7 @@ export default function App() {
     <Switch>
       <Route path="/sign_in" component={Sign_in} />
       <Route path="/sign_up" component={Sign_up} />
-      <Route path="/me" component={Me} />
+      <Route path="/" component={Me} />
     </Switch>
   );
 }
@@ -65,7 +65,7 @@ function Sign_in() {
         localStorage.removeItem("rememberedEmail");
       }
 
-      navigate("/me");
+      navigate("/");
     } else {
       alert(data.error);
     }
@@ -165,7 +165,7 @@ function Sign_up() {
       localStorage.setItem("accessToken", data.accessToken);
       localStorage.setItem("refreshToken", data.refreshToken);
       localStorage.setItem("userEmail", email); 
-      navigate("/me");
+      navigate("/");
     } else {
       alert(data.error);
     }
