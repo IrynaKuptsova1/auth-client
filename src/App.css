@@ -5,6 +5,13 @@
   align-items: center;
 }
 
+@media (max-width: 1024px) {
+  .sign-in {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 .sign-in__form {
   width: 100%;
   max-width: 500px;
@@ -31,6 +38,31 @@
   width: 100%;
   display: flex;
   align-items: center;
+}
+
+.form__input {
+  width: 100%;
+  padding: 16px;
+  font-family: var(--sans);
+  font-size: 16px;
+  background-color: var(--code-bg);
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+.form__input::placeholder {
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.form__input:focus {
+  border-color: var(--accent);
+  background-color: var(--bg);
+  box-shadow: 0 0 0 3px var(--accent-bg);
 }
 
 .form__input.form__input--password {
@@ -138,12 +170,6 @@
   color: var(--text-h);
   word-break: break-all;
 }
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
-}
 
 .spinner {
   width: 40px;
@@ -158,31 +184,14 @@
   width: 20px;
   height: 20px;
   border-width: 2px;
-  border-left-color: var(--bg); 
+  border-left-color: var(--bg);
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 1024px) {
-  .sign-in {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  
-}
-@media (max-width: 768px) {
-  .sign-in {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
 .session-expired-pop {
   position: fixed;
   top: 24px;
@@ -252,46 +261,7 @@
     transform: translateX(-50%) scale(1);
   }
 }
-.form__error-message {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background-color: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  color: #ef4444;
-  padding: 14px 16px;
-  border-radius: 12px;
-  font-family: var(--sans);
-  font-size: 15px;
-  line-height: 140%;
-  box-sizing: border-box;
-  width: 100%;
-  margin-bottom: 8px;
-  animation: shakeAndFadeIn 0.3s ease-in-out;
-}
 
-.form__error-icon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  .form__error-message {
-    background-color: rgba(239, 68, 68, 0.15);
-    border-color: rgba(239, 68, 68, 0.3);
-    color: #fca5a5;
-  }
-}
-
-@keyframes shakeAndFadeIn {
-  0% { transform: translateX(0); opacity: 0; }
-  20% { transform: translateX(-4px); }
-  40% { transform: translateX(4px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
-  100% { transform: translateX(0); opacity: 1; }
-}
 .form__error-wrapper {
   min-height: 60px;
   display: flex;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { isNonEmptyString } from "../types";
+import { isNonEmptyString} from "../types";
 
 export default function Home() {
   const [email, setEmail] = useState<string | null>(null);
@@ -96,7 +96,7 @@ export default function Home() {
         <h1 className="profile-card__title">Welcome</h1>
         <div className="profile-card__info">
           <span className="profile-card__label">Logged in as:</span>
-          <span className="profile-card__email">{email}</span>
+          <span className="profile-card__email">{email || "Unknown"}</span>
         </div>
         <button onClick={() => handleLogout(false)} className="btn btn-outline">
           Log out
