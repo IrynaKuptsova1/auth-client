@@ -8,9 +8,10 @@
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -40,7 +41,8 @@
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
 }
 
@@ -50,7 +52,8 @@
   display: flex;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: var(--heading);
   font-weight: 500;
   color: var(--text-h);
@@ -116,7 +119,9 @@ p {
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 0 3px var(--accent-border), var(--shadow);
+  box-shadow:
+    0 0 0 3px var(--accent-border),
+    var(--shadow);
   opacity: 0.95;
 }
 
@@ -139,7 +144,6 @@ p {
 .btn-outline:active {
   transform: scale(0.98);
 }
-
 .checkbox {
   display: flex;
   align-items: center;
@@ -166,10 +170,10 @@ p {
   border-radius: 6px;
   background-color: var(--code-bg);
   cursor: pointer;
-  display: grid;
-  place-content: center;
   transition: all 0.2s ease-in-out;
   margin: 0;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .checkbox__input:hover {
@@ -187,13 +191,15 @@ p {
   height: 6px;
   border-left: 2px solid var(--bg);
   border-bottom: 2px solid var(--bg);
-  transform: rotate(-45deg) translate(1px, -1px);
-  scale: 0;
-  transition: transform 0.1s ease-in-out, scale 0.1s ease-in-out;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+  transition: transform 0.15s ease-in-out;
 }
 
 .checkbox__input:checked::before {
-  scale: 1;
+  transform: translate(-50%, -50%) rotate(-45deg) scale(1);
 }
 
 .checkbox__input:focus-visible {
