@@ -63,18 +63,20 @@ export default function SignIn() {
   return (
     <div className="sign-in">
       {showNotification && (
-        <div className="session-expired-pop">
-          <div className="session-expired-pop__content">
-            <span>Your session has expired. Please sign in again.</span>
-            <button
-              onClick={() => setShowNotification(false)}
-              className="session-expired-pop__close"
-            >
-              &times;
-            </button>
-          </div>
-        </div>
-      )}
+  <div className="session-expired-pop">
+    <div className="session-expired-pop__content">
+      <span>Your session has expired. Please sign in again.</span>
+      <button
+        type="button" 
+        
+        onClick={() => setShowNotification(false)} 
+        className="session-expired-pop__close"
+      >
+        &times;
+      </button>
+    </div>
+  </div>
+)}
 
       <form className="sign-in__form form" onSubmit={handleSubmit}>
         <div className="form__error-wrapper">

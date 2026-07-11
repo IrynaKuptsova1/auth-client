@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { isNonEmptyString } from "../types";
+import { fetchWithAuth } from "../api";
 
 export default function Home() {
   const [email, setEmail] = useState<string | null>(null);
@@ -15,72 +15,17 @@ export default function Home() {
 
   useEffect(() => {
     const getEmail = async () => {
-      const currentToken = localStorage.getItem("accessToken");
-
-      if (!isNonEmptyString(currentToken)) {
-        handleLogout(false);
-        return;
-      }
-
       try {
-        let res = await fetch(`${import.meta.env.VITE_API_URL}/me`, {
-          headers: {
-            Authorization: `Bearer ${currentToken}`,
-          },
-        });
+        const res = await fetchWithAuth("/me");
 
-        if (res.status === 401) {
-          const refreshToken = localStorage.getItem("refreshToken");
-
-          if (!isNonEmptyString(refreshToken)) {
-            handleLogout(true);
-            return;
-          }
-
-          const refreshRes = await fetch(
-            `${import.meta.env.VITE_API_URL}/refresh`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ refreshToken }),
-            },
-          );
-
-          if (refreshRes.ok) {
-            const refreshData = await refreshRes.json();
-
-            if (
-              isNonEmptyString(refreshData.accessToken) &&
-              isNonEmptyString(refreshData.refreshToken)
-            ) {
-              localStorage.setItem("accessToken", refreshData.accessToken);
-              localStorage.setItem("refreshToken", refreshData.refreshToken);
-
-              res = await fetch(`${import.meta.env.VITE_API_URL}/me`, {
-                headers: {
-                  Authorization: `Bearer ${refreshData.accessToken}`,
-                },
-              });
-            } else {
-              handleLogout(true);
-              return;
-            }
-          } else {
-            handleLogout(true);
-            return;
-          }
-        }
-
-        if (res && res.ok) {
+        if (res.ok) {
           const data = await res.json();
           setEmail(data.email || null);
         } else {
-          handleLogout(false);
+          handleLogout();
         }
       } catch (err) {
-        console.error(err);
-        handleLogout(false);
-      } finally {
+        console.error("Ошибка при получении профиля:", err);} finally {
         setLoading(false);
       }
     };
@@ -105,7 +50,7 @@ export default function Home() {
           <span className="profile-card__email">{email || "Unknown"}</span>
         </div>
         <button onClick={() => handleLogout(false)} className="btn btn-outline">
-          Log out
+        Log out
         </button>
       </div>
     </div>
