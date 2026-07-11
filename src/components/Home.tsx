@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { isNonEmptyString} from "../types";
+import { isNonEmptyString } from "../types";
 
 export default function Home() {
   const [email, setEmail] = useState<string | null>(null);
@@ -10,7 +10,7 @@ export default function Home() {
     if (showAlert) {
       sessionStorage.setItem("session_expired", "true");
     }
-    window.location.href = "/sign_in";
+    window.location.href = "/sign-in";
   };
 
   useEffect(() => {
@@ -37,16 +37,22 @@ export default function Home() {
             return;
           }
 
-          const refreshRes = await fetch(`${import.meta.env.VITE_API_URL}/refresh`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ refreshToken }),
-          });
+          const refreshRes = await fetch(
+            `${import.meta.env.VITE_API_URL}/refresh`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ refreshToken }),
+            },
+          );
 
           if (refreshRes.ok) {
             const refreshData = await refreshRes.json();
 
-            if (isNonEmptyString(refreshData.accessToken) && isNonEmptyString(refreshData.refreshToken)) {
+            if (
+              isNonEmptyString(refreshData.accessToken) &&
+              isNonEmptyString(refreshData.refreshToken)
+            ) {
               localStorage.setItem("accessToken", refreshData.accessToken);
               localStorage.setItem("refreshToken", refreshData.refreshToken);
 
