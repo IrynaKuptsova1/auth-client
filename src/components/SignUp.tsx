@@ -53,31 +53,6 @@ export default function SignUp() {
         console.error(error);
         setFormError("Unable to connect to server");
       });
-
-    // try {
-    //   const response = await fetch(`${import.meta.env.VITE_API_URL}/sign-up`, {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ email, password }),
-    //   });
-    //   const data = await response.json();
-
-    //   if (
-    //     isNonEmptyString(data.accessToken) &&
-    //     isNonEmptyString(data.refreshToken)
-    //   ) {
-    //     localStorage.clear();
-    //     localStorage.setItem("accessToken", data.accessToken);
-    //     localStorage.setItem("refreshToken", data.refreshToken);
-    //     localStorage.setItem("userEmail", email);
-    //     navigate("/");
-    //   } else {
-    //     setFormError(data.error || "Registration failed");
-    //   }
-    // } catch (err) {
-    //   console.error(err);
-    //   setFormError("Unable to connect to server");
-    // }
   };
 
   const isFormInvalid =
