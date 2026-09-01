@@ -12,7 +12,7 @@ export default function SignUp() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
 
-  const handleSubmit: React.SubmitEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmit: React.SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     setFormError(null);
 
@@ -28,30 +28,56 @@ export default function SignUp() {
       return;
     }
 
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/sign-up`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
+    fetch(`${import.meta.env.VITE_API_URL}/sign-up`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    })
+      .then(async (response) => {
+        const data = await response.json();
 
-      if (
-        isNonEmptyString(data.accessToken) &&
-        isNonEmptyString(data.refreshToken)
-      ) {
-        localStorage.clear();
-        localStorage.setItem("accessToken", data.accessToken);
-        localStorage.setItem("refreshToken", data.refreshToken);
-        localStorage.setItem("userEmail", email);
-        navigate("/");
-      } else {
-        setFormError(data.error || "Registration failed");
-      }
-    } catch (err) {
-      console.error(err);
-      setFormError("Unable to connect to server");
-    }
+        if (
+          isNonEmptyString(data.accessToken) &&
+          isNonEmptyString(data.refreshToken)
+        ) {
+          localStorage.clear();
+          localStorage.setItem("accessToken", data.accessToken);
+          localStorage.setItem("refreshToken", data.refreshToken);
+          localStorage.setItem("userEmail", email);
+          navigate("/");
+        } else {
+          setFormError(data.error || "Registration failed");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setFormError("Unable to connect to server");
+      });
+
+    // try {
+    //   const response = await fetch(`${import.meta.env.VITE_API_URL}/sign-up`, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ email, password }),
+    //   });
+    //   const data = await response.json();
+
+    //   if (
+    //     isNonEmptyString(data.accessToken) &&
+    //     isNonEmptyString(data.refreshToken)
+    //   ) {
+    //     localStorage.clear();
+    //     localStorage.setItem("accessToken", data.accessToken);
+    //     localStorage.setItem("refreshToken", data.refreshToken);
+    //     localStorage.setItem("userEmail", email);
+    //     navigate("/");
+    //   } else {
+    //     setFormError(data.error || "Registration failed");
+    //   }
+    // } catch (err) {
+    //   console.error(err);
+    //   setFormError("Unable to connect to server");
+    // }
   };
 
   const isFormInvalid =
