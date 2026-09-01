@@ -10,7 +10,6 @@ import { useEffect } from "react";
 
 export default function App() {
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + "/health");
   }, []);
   return (
     <>
