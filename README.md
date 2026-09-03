@@ -32,28 +32,6 @@ The app stores authentication tokens in `localStorage`, redirects users when the
 - Expired-session notification before redirecting to sign-in
 - Environment-based backend configuration via `VITE_API_URL`
 
-## Project Structure
-
-```text
-src/
-├── App.tsx                  # Route registration and health check
-├── App.css                 # Shared UI styles for auth screens and profile
-├── api.ts                  # Auth-aware request wrapper with refresh logic
-├── index.css               # Global design tokens and base styles
-├── main.tsx                # Application bootstrap
-├── normalze.css            # Legacy CSS reset file; name appears misspelled
-├── types.ts                # Shared type guards
-├── validation.ts           # Zod schema for authentication inputs
-├── components/
-│   ├── Home.tsx            # Authenticated profile page and logout
-│   ├── SignIn.tsx          # Sign-in form
-│   └── SignUp.tsx          # Sign-up form
-public/                     # Present in the repo structure, but currently unused
-package.json                # Scripts and dependencies
-vite.config.ts             # Vite configuration
-eslint.config.js           # ESLint rules
-index.html                 # Application entry HTML
-```
 
 ## File-by-File Summary
 
